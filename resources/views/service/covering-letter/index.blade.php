@@ -17,17 +17,15 @@
               <div class="col-lg-6">
                   <form class="contact_us_form row" id="contactForm" novalidate="novalidate" style="margin-top: 0px;">
                       <div class="form-group col-lg-12">
-                          <select class="form-control" name="kk_numbers" id="kk_numbers">
-                            <option value="" disabled selected>-- Pilih nomor KK anda --</option>
-                            <option value="">123456789</option>
-                            <option value="">987654321</option>
-                          </select>
+                        <input type="text" class="form-control" id="no_kk" name="no_kk" placeholder="No KK">
                       </div>
                       <div class="form-group col-lg-12">
                           <select class="form-control" name="nik" id="nik">
                             <option value="" disabled selected>-- Pilih NIK anda --</option>
-                            <option value="">123456789</option>
-                            <option value="">987654321</option>
+                            <option class="nik-list" value="0">32012441209235</option>
+                            <option class="nik-list" value="1">32012488209235</option>
+                            <option class="nik-list" value="2">32012441211235</option>
+                            <option class="nik-list" value="3">32012441934535</option>
                           </select>
                       </div>
                       <div class="form-group col-lg-12">
@@ -48,8 +46,8 @@
                       <div class="form-group col-lg-12">
                           <select class="form-control" name="marital-status" id="marital-status">
                             <option value="" disabled selected>-- Status pernikahan --</option>
-                            <option value="">Menikah</option>
-                            <option value="">Belum Menikah</option>
+                            <option value="1">Menikah</option>
+                            <option value="0">Belum Menikah</option>
                           </select>
                       </div>
                       <div class="form-group col-lg-12">
@@ -95,8 +93,10 @@
           </div>
       </div>
   </section>
+
 @endsection
 
 @section('extra-js')
-
+  <!-- Sementara We -->
+  <script src="../../../js/sementara.js" type="text/javascript"></script>
 @endsection

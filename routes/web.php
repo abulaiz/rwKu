@@ -17,3 +17,4 @@ include 'app/main.php';
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/pdf', 'TestController@index');

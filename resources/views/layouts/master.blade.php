@@ -23,6 +23,7 @@
         <link href="{{ asset('main/vendors/magnify-popup/magnific-popup.css') }}" rel="stylesheet">
 
         <link href="{{ asset('main/css/style.css') }}" rel="stylesheet">
+        <link href="{{ asset('css/style2.css') }}" rel="stylesheet">
         <link href="{{ asset('main/css/responsive.css') }}" rel="stylesheet">
 
         <!-- Extra plugin css -->
@@ -141,5 +142,7 @@ Copyright &copy; 2019 All rights reserved | Template by <a href="https://colorli
         <script src="{{ asset('main/js/smoothscroll.js') }}"></script>
 
         <script src="{{ asset('main/js/theme.js') }}"></script>
+
+        @yield('extra-js')
     </body>
 </html>
