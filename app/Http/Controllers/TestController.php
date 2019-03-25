@@ -5,10 +5,13 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use PDF;
 
+use App\Http\Requests;
+use Illuminate\Http\Response;
+
 class TestController extends Controller
 {
 
-    public function index(){
+    public function index(Request $request){
 		// Content
 		$html = 'Write something here';
 
@@ -32,14 +35,6 @@ class TestController extends Controller
 
 		// Custom Footer
 		PDF::setFooterCallback(function($pdf) {
-
-		        // Position at 15 mm from bottom
-		        $pdf->SetY(-15);
-		        // Set font
-		        $pdf->SetFont('times', 'I', 8);
-		        // Page number
-		        $pdf->Cell(0, 10, 'Page '.$pdf->getAliasNumPage().'/'.$pdf->getAliasNbPages(), 0, false, 'C', 0, '', 0, false, 'T', 'M');
-
 		});
 
 		PDF::SetAuthor('System');
@@ -66,35 +61,78 @@ class TestController extends Controller
 		PDF::Ln(10);
 
 		PDF::Cell(50, 17, "Nama", 0, 0, '', 0, '', 0, false, 'M', 'M');
-		PDF::Cell(0, 17, ":  Imron Abu Laiz", 0, true, '', 0, '', 0, false, 'M', 'M');
+		PDF::Cell(0, 17, ":  ".$request->cookie('nama'), 0, true, '', 0, '', 0, false, 'M', 'M');
 
 		PDF::Cell(50, 17, "Noppen", 0, 0, '', 0, '', 0, false, 'M', 'M');
-		PDF::Cell(0, 17, ":  Imron Abu Laiz", 0, true, '', 0, '', 0, false, 'M', 'M');
+		PDF::Cell(0, 17, ":  ".$request->cookie('nik'), 0, true, '', 0, '', 0, false, 'M', 'M');
 
 		PDF::Cell(50, 17, "Jenis Kelamin", 0, 0, '', 0, '', 0, false, 'M', 'M');
-		PDF::Cell(0, 17, ":  Imron Abu Laiz", 0, true, '', 0, '', 0, false, 'M', 'M');
+		PDF::Cell(0, 17, ":  ".$request->cookie('jenis_kelamin'), 0, true, '', 0, '', 0, false, 'M', 'M');
 
 		PDF::Cell(50, 17, "Tempat/Tgl.Lahir (umur)", 0, 0, '', 0, '', 0, false, 'M', 'M');
-		PDF::Cell(0, 17, ":  Imron Abu Laiz", 0, true, '', 0, '', 0, false, 'M', 'M');
+		PDF::Cell(0, 17, ":  ".$request->cookie('lahir'), 0, true, '', 0, '', 0, false, 'M', 'M');
 
 		PDF::Cell(50, 17, "Kewarganegaraan", 0, 0, '', 0, '', 0, false, 'M', 'M');
-		PDF::Cell(0, 17, ":  Imron Abu Laiz", 0, true, '', 0, '', 0, false, 'M', 'M');
+		PDF::Cell(0, 17, ":  ".$request->cookie('kewarganegaraan'), 0, true, '', 0, '', 0, false, 'M', 'M');
 
 		PDF::Cell(50, 17, "Status Perkawinan", 0, 0, '', 0, '', 0, false, 'M', 'M');
-		PDF::Cell(0, 17, ":  Imron Abu Laiz", 0, true, '', 0, '', 0, false, 'M', 'M');
+		PDF::Cell(0, 17, ":  ".$request->cookie('perkawinan'), 0, true, '', 0, '', 0, false, 'M', 'M');
 
 		PDF::Cell(50, 17, "Pekerjaan", 0, 0, '', 0, '', 0, false, 'M', 'M');
-		PDF::Cell(0, 17, ":  Imron Abu Laiz", 0, true, '', 0, '', 0, false, 'M', 'M');
+		PDF::Cell(0, 17, ":  ".$request->cookie('pekerjaan'), 0, true, '', 0, '', 0, false, 'M', 'M');
 
 		PDF::Cell(50, 17, "Agama", 0, 0, '', 0, '', 0, false, 'M', 'M');
-		PDF::Cell(0, 17, ":  Imron Abu Laiz", 0, true, '', 0, '', 0, false, 'M', 'M');
+		PDF::Cell(0, 17, ":  ".$request->cookie('agama'), 0, true, '', 0, '', 0, false, 'M', 'M');
 
-		$des = 'Ini adalah alamat yang amat amat panjang, jadi di coba dulu sama saya';
+		$des = $request->cookie('alamat');
 		PDF::Cell(50, 17, "Alamat", 0, 0, '', 0, '', 0, false, 'M', 'M');
-		PDF::Cell(0, 17, ":  ", 0, 0, '', 0, '', 0, false, 'M', 'M');
+		PDF::Cell(3.5, 15, ":  ", 0, 0, '', 0, '', 0, false, 'M', 'M');
+		PDF::setCellHeightRatio(1.2);
+		PDF::setY( PDF::getY()-2, false );
 		PDF::MultiCell(0, 5, $des, 0, '', 0, 2, '', '', true);	
+		PDF::setY( PDF::getY()+10 );
+
+		PDF::Cell(50, 17, "SKP. Tgl / Nomor", 0, 0, '', 0, '', 0, false, 'M', 'M');
+		PDF::Cell(0, 17, ":  -", 0, true, '', 0, '', 0, false, 'M', 'M');
+
+		PDF::Cell(50, 17, "KK. Tgl / Nomor", 0, 0, '', 0, '', 0, false, 'M', 'M');
+		PDF::Cell(0, 17, ":  -", 0, true, '', 0, '', 0, false, 'M', 'M');
+
+		PDF::Ln(2);
+
+		PDF::Cell(50, 17, "Pengantar ini diperlukan untuk membuat : ", 0, true, '', 0, '', 0, false, 'M', 'M');
+		PDF::setY( PDF::getY()-4 );
+		PDF::MultiCell(0, 5, $request->cookie('keperluan'), 0, '', 0, 2, '', '', true);	
+
+		PDF::Ln(10);
+
+		PDF::Cell(0, 15, "Demikian Surat Pengantar ini kami buat, untuk mendapatkan pelayanan sebagaimana mestinya", 0, true, '', 0, '', 0, false, 'M', 'M');
+
+
 
 		PDF::lastPage();
 		PDF::Output('my_file.pdf', 'I');  
+    }
+
+    public function log(Request $req){
+    	$niks = [ '32012441209235', '32012488209235', '32012441211235', '32012441934535'];
+
+	      $minutes = 1;
+	      $response = new Response('Hello World');
+	      $response->withCookie(cookie('nama', $req->nama, $minutes));
+	      $response->withCookie(cookie('nik', $niks[$req->nik], $minutes));
+	      $response->withCookie(cookie('jenis_kelamin', $req->jenis_kelamin, $minutes));
+	      $response->withCookie(cookie('lahir', $req->lahir, $minutes));
+	      $response->withCookie(cookie('kewarganegaraan', $req->kewarganegaraan, $minutes));
+	      $response->withCookie(cookie('perkawinan', ($req->perkawinan == '0' ? 'Belum Menikah' : 'Nikah'), $minutes));
+	      $response->withCookie(cookie('pekerjaan', $req->pekerjaan, $minutes));
+	      $response->withCookie(cookie('agama', $req->agama, $minutes));
+	      $response->withCookie(cookie('alamat', $req->alamat, $minutes));
+	      $response->withCookie(cookie('keperluan', $req->keperluan, $minutes));
+	      return $response;
+    }
+
+    public function hai(Request $req){
+    	return redirect()->back()->with(['_msg'=>'euy','_e'=>'success']);
     }
 }
