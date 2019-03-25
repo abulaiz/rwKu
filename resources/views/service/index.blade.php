@@ -31,7 +31,7 @@
                           <img src="{{ asset('main/img/icon/f-icon-1.png') }}" alt="">
                       </div>
                       <h4>Layanan lainnya</h4>
-                      <p>Layanan liannya yang disediakan oleh RW setempat</p>
+                      <p>Layanan lainnya yang disediakan oleh RW setempat</p>
                       <a class="more_btn" href="#">Buka</a>
                   </div>
               </div>
@@ -41,7 +41,7 @@
                           <img src="{{ asset('main/img/icon/f-icon-1.png') }}" alt="">
                       </div>
                       <h4>Layanan lainnya</h4>
-                      <p>Layanan liannya yang disediakan oleh RW setempat</p>
+                      <p>Layanan lainnya yang disediakan oleh RW setempat</p>
                       <a class="more_btn" href="#">Buka</a>
                   </div>
               </div>

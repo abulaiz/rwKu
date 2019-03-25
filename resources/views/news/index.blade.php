@@ -19,56 +19,62 @@
                   <div class="blog_main_inner">
                       <div class="blog_main_item">
                           <div class="blog_img">
-                              <img class="img-fluid" src="{{ asset('main/img/blog/blog-1.jpg') }}" alt="">
+                              <img class="img-fluid" src="{{ asset('main/img/blog/blog-1-1.jpg') }}" alt="">
                               <div class="blog_date">
-                                  <h4>29</h4>
-                                  <h5>October, 2017</h5>
+                                  <h4>18</h4>
+                                  <h5>Maret, 2019</h5>
                               </div>
                           </div>
                           <div class="blog_text">
-                              <a href="#"><h4>Let us introduce you the best apps</h4></a>
+                              <a href="#"><h4>Anies: Saya Titipkan kepada Pak RW Rp 100 Juta untuk Uang Mendadak</h4></a>
                               <div class="blog_author">
-                                  <a href="#">By Lore Papp-Dinea</a>
-                                  <a href="#">Design</a>
+                                  <a href="#">By Nibras Nada Nailufar</a>
+                                  <a href="#">Kompas.com</a>
                               </div>
-                              <p>Etiam nec odio vestibulum est mattis effic iturut magna. Pellentesque sit am et tellus blandit. Etiam nec odio vestibul. Etiam nec odio vestibulum est mattis effic iturut magna. Pellentesque sit am et tellus blandit. Etiam nec odio vestibul. </p>
-                              <a class="more_btn" href="#">Read More</a>
+                              <p>JAKARTA, KOMPAS.com - Gubernur DKI Jakarta Anies Baswedan mengunjungi korban kebakaran di Krukut, Tamansari, Jakarta Barat, Senin (18/3/2019).</p>
+                              <p>Dalam kunjungannya, Anies menyumbang Rp 100 juta kepada korban kebakaran.</p>
+                              <p>Sumber: <a href="https://megapolitan.kompas.com/read/2019/03/18/20430401/anies-saya-titipkan-kepada-pak-rw-rp-100-juta-untuk-uang-mendadak">Kompas.com</a></p>
+                              <a class="more_btn" href="#">Selengkapnya</a>
                           </div>
                       </div>
                       <div class="blog_main_item">
                           <div class="blog_img">
-                              <img class="img-fluid" src="{{ asset('main/img/blog/blog-2.jpg') }}" alt="">
+                              <img class="img-fluid" src="{{ asset('main/img/blog/blog-2-2.jpg') }}" alt="">
                               <div class="blog_date">
-                                  <h4>29</h4>
-                                  <h5>October, 2017</h5>
+                                  <h4>04</h4>
+                                  <h5>Januari, 2019</h5>
                               </div>
                           </div>
                           <div class="blog_text">
-                              <a href="#"><h4>Let us introduce you the best apps</h4></a>
+                              <a href="#"><h4>Pemkot Bekasi Targetkan Bank Sampah Tersedia di Tiap RW</h4></a>
                               <div class="blog_author">
-                                  <a href="#">By Lore Papp-Dinea</a>
-                                  <a href="#">Design</a>
+                                  <a href="#">By Dean Pahrevi</a>
+                                  <a href="#">Kompas.com</a>
                               </div>
-                              <p>Etiam nec odio vestibulum est mattis effic iturut magna. Pellentesque sit am et tellus blandit. Etiam nec odio vestibul. Etiam nec odio vestibulum est mattis effic iturut magna. Pellentesque sit am et tellus blandit. Etiam nec odio vestibul. </p>
-                              <a class="more_btn" href="#">Read More</a>
+                              <p>BEKASI, KOMPAS.com - Pemerintah Kota Bekasi menargetkan 70 persen RW (Rukun Warga) di Kota Bekasi tersedia bank sampah.</p>
+                              <p>Kabid Penaatan dan dan Peningkatan Kapasitas pada Dinas Lingkungan Hidup Kota Bekasi Ferdinan mengatakan, saat ini, bank sampah baru tersedia di 220 RW.</p>
+                              <p>Sumber: <a href="https://megapolitan.kompas.com/read/2019/03/18/20430401/anies-saya-titipkan-kepada-pak-rw-rp-100-juta-untuk-uang-mendadak">Kompas.com</a></p>
+                              <a class="more_btn" href="#">Selengkapnya</a>
                           </div>
                       </div>
                       <div class="blog_main_item">
                           <div class="blog_img">
-                              <img class="img-fluid" src="{{ asset('main/img/blog/blog-3.jpg') }}" alt="">
+                              <img class="img-fluid" src="{{ asset('main/img/blog/blog-3-3.jpg') }}" alt="">
                               <div class="blog_date">
-                                  <h4>29</h4>
-                                  <h5>October, 2017</h5>
+                                  <h4>07</h4>
+                                  <h5>September, 2019</h5>
                               </div>
                           </div>
                           <div class="blog_text">
-                              <a href="#"><h4>Let us introduce you the best apps</h4></a>
+                              <a href="#"><h4>Dua Kali Menolak, DPRD Akhirnya Setujui Anggaran Pendamping Rapat RW</h4></a>
                               <div class="blog_author">
-                                  <a href="#">By Lore Papp-Dinea</a>
-                                  <a href="#">Design</a>
+                                  <a href="#">By NIbras Nada Nailufar</a>
+                                  <a href="#">Kompas.com</a>
                               </div>
-                              <p>Etiam nec odio vestibulum est mattis effic iturut magna. Pellentesque sit am et tellus blandit. Etiam nec odio vestibul. Etiam nec odio vestibulum est mattis effic iturut magna. Pellentesque sit am et tellus blandit. Etiam nec odio vestibul. </p>
-                              <a class="more_btn" href="#">Read More</a>
+                              <p>AKARTA, KOMPAS.com - Badan Anggaran (Banggar) DPRD DKI Jakarta akhirnya menyetujui anggaran perekrutan dan pelatihan untuk pendamping pada rapat RW dan musyawarah rencana pembangunan (musrenbang). Anggaran sebesar Rp 1,6 miliar itu sebelumnya telah dua kali ditolak.</p>
+                              <p>"Pendampingan RW ini untuk memperbaiki Jakarta 10 hingga 15 tahun ke depan, nilai edukasinya baik sekali untuk generasi selanjutnya. Kalau Pak Gembong (Warsono) bilang mencurigakan, mencurigakan apa? Pengalihannya ada, bahwa angka ini untuk jasa transportasi anak-anak yang memberikan pendampingan. Kita saja di forum ini masih ada salah persepsi, bagaimana di bawah sana di tingkat RW?" kata Sekretaris Saefullah dalam rapat pembahasan Kebijakan Umum Anggaran (KUA) dan Priorotas Plafon Anggaran Sementara (PPAS) 2018, Jumat (7/9/2018).</p>
+                              <p>Sumber: <a href="https://megapolitan.kompas.com/read/2019/03/18/20430401/anies-saya-titipkan-kepada-pak-rw-rp-100-juta-untuk-uang-mendadak">Kompas.com</a></p>
+                              <a class="more_btn" href="#">Selengkapnya</a>
                           </div>
                       </div>
                   </div>
@@ -85,15 +91,14 @@
                       </aside>
                       <aside class="r_widget categories_widget">
                           <div class="r_w_title">
-                              <h3>Categories</h3>
+                              <h3>Kategori</h3>
                           </div>
                           <ul>
-                              <li><a href="#">Vestibulum maximus</a></li>
-                              <li><a href="#">Nisi eu lobortis pharetra</a></li>
-                              <li><a href="#">Orci quam accumsan</a></li>
-                              <li><a href="#">Auguen pharetra massa</a></li>
-                              <li><a href="#">Tellus ut nulla</a></li>
-                              <li><a href="#"> Etiam egestas viverra </a></li>
+                              <li><a href="#">Kegiatan Rutin</a></li>
+                              <li><a href="#">Kerjasama</a></li>
+                              <li><a href="#">Bantuan</a></li>
+                              <li><a href="#">Kunjungan</a></li>
+                              <li><a href="#">Prestasi Warga</a></li>
                           </ul>
                       </aside>
                       <aside class="r_widget insta_widget">
