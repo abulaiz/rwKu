@@ -31,6 +31,30 @@
       <!-- partial -->
       <div class="main-panel">
         <div class="content-wrapper">
+          @if(session('errors'))
+    				@if ($errors->any())
+    			    <div class="alert bg-warning" role="alert">
+    			        ERROR !!
+    			      <a href="#" class="pull-right">
+    			        <em class="fa fa-lg fa-close close-alert"></em>
+    			      </a>
+    			      <ul>
+    			        @foreach ($errors->all() as $error)
+    			          <li>{{ $error }}</li>
+    			        @endforeach
+    			      </ul>
+    			    </div>
+    			  @endif
+    			@endif
+    		  @if (Session('success'))
+    		    <div class="alert bg-success" role="alert">
+    		      <em class="fa fa-lg fa-check">&nbsp;</em>
+    		        {{ Session('success') }}
+    		      <a href="#" class="pull-right">
+    		        <em class="fa fa-lg fa-close close-alert"></em>
+    		      </a>
+    		    </div>
+    		  @endif
           @yield('content')
         </div>
         <!-- content-wrapper ends -->

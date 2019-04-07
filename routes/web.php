@@ -12,6 +12,7 @@
 */
 
 include 'app/admin/admin.php';
+include 'app/admin/resident.php';
 include 'app/main.php';
 
 Auth::routes();
