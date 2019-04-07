@@ -6,11 +6,11 @@
 
     Route::get('dashboard', function () {
       return view('admin/dashboard/index');
-    })->name('admin-dashboard');
+    })->name('admin-dashboard')->middleware('auth');
 
     Route::prefix('service')->group(function () {
       Route::get('submission/cover-letter', function () {
         return view('admin/service/submission');
-      })->name('admin-residents');
+      })->name('admin-residents')->middleware('auth');
     });
   });

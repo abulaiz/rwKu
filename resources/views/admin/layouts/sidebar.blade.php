@@ -1,7 +1,7 @@
 <nav class="sidebar sidebar-offcanvas" id="sidebar">
   <ul class="nav">
     <li class="nav-item">
-      <a class="nav-link" href="#">
+      <a class="nav-link"href="/adm/dashboard">
         <i class="menu-icon mdi mdi-television"></i>
         <span class="menu-title">Dashboard</span>
       </a>
@@ -55,5 +55,13 @@
         <span class="menu-title">Berita</span>
       </a>
     </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
+        <i class="menu-icon mdi mdi-chart-line"></i>
+        <span class="menu-title">Logout</span>
+      </a>
+    </li>    
   </ul>
 </nav>
+
+<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">{{ csrf_field() }}</form>
