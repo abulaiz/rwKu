@@ -15,10 +15,10 @@
       <div class="collapse" id="residents-menu">
         <ul class="nav flex-column sub-menu">
           <li class="nav-item">
-            <a class="nav-link" href="/adm/residents/add">Input Baru</a>
+            <a class="nav-link" href="/adm/resident/add">Input Baru</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/adm/residents/list">List Warga</a>
+            <a class="nav-link" href="/adm/resident/list">List Warga</a>
           </li>
         </ul>
       </div>
@@ -32,7 +32,7 @@
       <div class="collapse" id="service-menu">
         <ul class="nav flex-column sub-menu">
           <li class="nav-item">
-            <a class="nav-link" href="#">Pengajuan Surat Pengantar</a>
+            <a class="nav-link" href="/adm/service/submission/cover-letter">Pengajuan Surat Pengantar</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#">Layanan Lainnya</a>

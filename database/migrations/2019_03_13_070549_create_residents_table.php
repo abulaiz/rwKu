@@ -16,11 +16,13 @@ class CreateResidentsTable extends Migration
         Schema::create('residents', function (Blueprint $table) {
             $table->string('nik')->unique();
             $table->unsignedInteger('kk_number_id');
+            $table->string('name');
             $table->string('sex');
             $table->string('place_of_birth');
             $table->date('date_of_birth');
             $table->string('address');
-            $table->string('rt_rw');
+            $table->string('rt');
+            $table->string('rw');
             $table->string('kel_village');
             $table->string('sub_district');
             $table->string('religion');
@@ -31,7 +33,7 @@ class CreateResidentsTable extends Migration
 
             $table->foreign('kk_number_id')
                   ->references('id')->on('kk_numbers')
-                  ->onDelete('cascade')->onUpdate('cascade');            
+                  ->onDelete('cascade')->onUpdate('cascade');
         });
     }
 

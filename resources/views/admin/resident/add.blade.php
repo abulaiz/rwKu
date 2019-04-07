@@ -7,18 +7,23 @@
       <div class="card">
         <div class="card-body">
           <h4 class="card-title">Input Warga</h4>
-          <form class="forms-sample">
+          {!!Form::open(['route' => ['resident.store'],'method'=>'post', 'id'=>'form-resident', 'class'=>'forms-sample']) !!}
             <div class="form-group">
               <label for="kk_number">Nomor KK</label>
               <select class="form-control" id="kk_number" name="kk_number">
                 <option selected disabled>-- Pilih Nomor KK --</option>
-                <option>123546</option>
-                <option>654321</option>
+                @foreach ($kk as $data)
+                  <option value="{{ $data->id }}">{{ $data->number }}</option>
+                @endforeach
               </select>
             </div>
             <div class="form-group">
               <label for="nik">NIK</label>
               <input type="text" class="form-control" id="nik" name="nik" placeholder="NIK">
+            </div>
+            <div class="form-group">
+              <label for="name">Nama</label>
+              <input type="text" class="form-control" id="name" name="name" placeholder="Nama">
             </div>
             <div class="form-group">
               <label for="sex">Jenis Kelamin</label>
@@ -29,12 +34,12 @@
               </select>
             </div>
             <div class="form-group">
-              <label for="place-birth">Tempat Lahir</label>
-              <input type="text" class="form-control" name="place-birth" id="place-birth" placeholder="Tempat Lahir">
+              <label for="place_of_birth">Tempat Lahir</label>
+              <input type="text" class="form-control" name="place_of_birth" id="place_of_birth" placeholder="Tempat Lahir">
             </div>
             <div class="form-group">
-              <label for="date-birth">Tanggal Lahir</label>
-              <input onfocus="(this.type='date')" class="form-control" name="date-birth" id="date-birth" placeholder="Tanggal Lahir">
+              <label for="date_of_birth">Tanggal Lahir</label>
+              <input onfocus="(this.type='date')" class="form-control" name="date_of_birth" id="date_of_birth" placeholder="Tanggal Lahir">
             </div>
             <div class="form-group">
               <label for="citizenship">Kewarganegaraan</label>
@@ -43,7 +48,7 @@
             <div class="form-group">
               <div class="form-check form-check-flat">
                 <label class="form-check-label">
-                  <input type="checkbox" class="form-check-input" name="marital-status" id="marital-status"> Menikah
+                  <input type="checkbox" class="form-check-input" name="marital_status" id="marital-status"> Menikah
                 <i class="input-helper"></i></label>
               </div>
             </div>
@@ -56,20 +61,28 @@
               <input type="text" class="form-control" name="religion" id="religion" placeholder="Agama">
             </div>
             <div class="form-group">
-              <label for="rt-rw">RT/RW</label>
-              <input type="text" class="form-control" name="rt-rw" id="rt-rw" placeholder="RT/RW">
+              <label for="rt-rw">Address</label>
+              <input type="text" class="form-control" name="address" id="address" placeholder="Address">
             </div>
             <div class="form-group">
-              <label for="kel-village">Kelurahan / Desa</label>
-              <input type="text" class="form-control" name="kel-village" id="kel-village" placeholder="Kelurahan/Desa">
+              <label for="rt-rw">RT</label>
+              <input type="text" class="form-control" name="rt" id="rt" placeholder="RT">
             </div>
             <div class="form-group">
-              <label for="sub-district">Kecamatan</label>
-              <input type="text" class="form-control" name="sub-district" id="sub-district" placeholder="Kecamatan">
+              <label for="rt-rw">RW</label>
+              <input type="text" class="form-control" name="rw" id="rw" placeholder="RW">
+            </div>
+            <div class="form-group">
+              <label for="kel_village">Kelurahan / Desa</label>
+              <input type="text" class="form-control" name="kel_village" id="kel_village" placeholder="Kelurahan/Desa">
+            </div>
+            <div class="form-group">
+              <label for="sub_district">Kecamatan</label>
+              <input type="text" class="form-control" name="sub_district" id="sub_district" placeholder="Kecamatan">
             </div>
             <button type="submit" class="btn btn-success mr-2">Tambah</button>
             <button class="btn btn-light">Reset</button>
-          </form>
+          {!! Form::close() !!}
         </div>
       </div>
     </div>
@@ -79,14 +92,15 @@
           <div class="card">
             <div class="card-body">
               <h4 class="card-title">Input Nomor KK Baru</h4>
-              <form class="forms-sample">
+              {!!Form::open(['route' => ['resident.store'],'method'=>'post', 'id'=>'form-resident', 'class'=>'forms-sample']) !!}
                 <div class="form-group">
                   <label for="exampleInputEmail1">Nomor KK</label>
-                  <input type="email" class="form-control" id="kk_number" placeholder="Nomor KK">
+                  <input type="text" class="form-control" id="kk_number" name="kk_number" placeholder="Nomor KK">
+                  <input type="hidden" class="form-control" name="type" value="kk">
                 </div>
                 <button type="submit" class="btn btn-success mr-2">Tambah</button>
                 <button class="btn btn-light">Reset</button>
-              </form>
+              {!! Form::close() !!}
             </div>
           </div>
         </div>
