@@ -106,9 +106,17 @@ class TestController extends Controller
 
 		PDF::Ln(10);
 
-		PDF::Cell(0, 15, "Demikian Surat Pengantar ini kami buat, untuk mendapatkan pelayanan sebagaimana mestinya", 0, true, '', 0, '', 0, false, 'M', 'M');
+		PDF::Cell(0, 15, "Demikian Surat Pengantar ini kami buat, untuk mendapatkan pelayanan sebagaimana mestinya.", 0, true, '', 0, '', 0, false, 'M', 'M');
 
+		// PDF::setX( PDF::getX() + 110 );
+		// PDF::Cell(0, 10, "Bandung, 27 Mei 2019", 0, true, 'C', 0, '', 0, false, 'M', 'M');
 
+		// PDF::setX( PDF::getX() + 110 );
+		// PDF::Cell(0, 18, "Ketua RT", 0, true, 'C', 0, '', 0, false, 'M', 'M');
+		$ht = '
+			<p style="color:red; width:50%; background-color: black;">hai</p>
+		';
+		PDF::writeHTML($ht);
 
 		PDF::lastPage();
 		PDF::Output('my_file.pdf', 'I');  
