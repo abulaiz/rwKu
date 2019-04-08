@@ -99,6 +99,11 @@
       </div>
   </section>
 
+  <div style="opacity: 0">
+    <p id="kk_res_tmp">{{ json_encode($kk_res) }}</p>
+    <p id="nik_tmp">{{ json_encode($nik) }}</p>
+  </div>
+
 @endsection
 
 @section('extra-js')

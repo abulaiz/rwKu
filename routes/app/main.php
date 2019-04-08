@@ -7,9 +7,7 @@
       return view('service.index');
   });
 
-  Route::get('/service/covering-letter', function () {
-      return view('service.covering-letter.index');
-  });
+  Route::get('/service/covering-letter', 'SementaraController@index');
 
   Route::get('/galery', function () {
       return view('galery.index');

@@ -1,66 +1,8 @@
 var loaded = false;
 
-var nokk = [
-	{
-		'no_kk' : '3204441243230021',
-		'niks' : [
-			'1', '3'
-		]
-	},
-	{
-		'no_kk' : '3204441243230022',
-		'niks' : [
-			'0', '2'
-		]
-	}
-];
+var nokk = JSON.parse( $("#kk_res_tmp").text() );
 
-var nik = [
-	{
-		'nama' : 'Ahmad1',
-		'jenis_kelamin' : 'Laki-laki',
-		'tempat_lahir' : 'Bandung',
-		'tanggal_lahir' : '1977-03-02',
-		'kewarganegaraan' : 'WNI',
-		'nikah' : '1',
-		'pekerjaan' : 'Wiraswasta',
-		'agama' : 'Islam',
-		'alamat' : 'Jl Kenangan No 13, RT 04 RW 08'
- 	},
-	{
-		'nama' : 'Ahmad2',
-		'jenis_kelamin' : 'Laki-laki',
-		'tempat_lahir' : 'Bandung',
-		'tanggal_lahir' : '1998-03-02',
-		'kewarganegaraan' : 'WNI',
-		'nikah' : '0',
-		'pekerjaan' : 'Wiraswasta',
-		'agama' : 'Islam',
-		'alamat' : 'Jl Melati No 13, RT 02 RW 08'
- 	},
-	{
-		'nama' : 'Ahmad3',
-		'jenis_kelamin' : 'Laki-laki',
-		'tempat_lahir' : 'Jakarta',
-		'tanggal_lahir' : '1977-09-01',
-		'kewarganegaraan' : 'WNI',
-		'nikah' : '1',
-		'pekerjaan' : 'Wiraswasta',
-		'agama' : 'Islam',
-		'alamat' : 'Jl Aja Dulu No 04, RT 01 RW 08'
- 	},
-	{
-		'nama' : 'Ahmad4',
-		'jenis_kelamin' : 'Laki-laki',
-		'tempat_lahir' : 'Jakarta',
-		'tanggal_lahir' : '1982-01-09',
-		'kewarganegaraan' : 'WNI',
-		'nikah' : '1',
-		'pekerjaan' : 'Wiraswasta',
-		'agama' : 'Islam',
-		'alamat' : 'Jl Melati No 02, RT 01 RW 08'
- 	}, 	 	 	
-];
+var nik = JSON.parse( $("#nik_tmp").text() );
 
 var url = $('[name=mainURL]').attr('content');
 var csrf_token = $('[name=csrf-token]').attr('content');

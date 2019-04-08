@@ -15,7 +15,8 @@ class ResidentController extends Controller
     }
 
     public function page_list(){
-      return view("admin.resident.list");
+      $data = Resident::all();
+      return view("admin.resident.list", compact('data'));
     }
 
     public function store(Request $req){
@@ -69,5 +70,16 @@ class ResidentController extends Controller
       $kk = new KkNumber;
       $kk->number = $req->kk_number;
       $kk->save();
+    }
+
+    public function list(){
+      $data = Resident::all();
+      $res = [];
+      foreach ($data as $item) {
+        $res[] = [
+          'nama' => $item->name, 'jenis_kelamin' => $item->sex,
+          'rt' => $item->rt
+        ];
+      }
     }
 }
