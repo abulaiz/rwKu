@@ -26,14 +26,13 @@ class ResidentController extends Controller
 
     public function store_resident($req){
       $this->validate($req, [
-        "kk_number" => "required|numeric",
+        "kk_number" => "required|numeric|exists:kk_numbers,number",
         "nik" => "required|numeric|digits:16",
         "name" => "required|string",
         "sex" => "required|string",
         "place_of_birth" => "required|string",
         "date_of_birth" => "required|date",
         "citizenship" => "required|string",
-        "marital_status" => "required",
         "job" => "required|string",
         "religion" => "required|string",
         "address" => "required|string",

@@ -1,3 +1,4 @@
+
 <?php
 
 use Illuminate\Database\Seeder;
@@ -16,6 +17,10 @@ class UserSeeder extends Seeder
         $superadmin->name = 'ahmad';
         $superadmin->password = bcrypt('ganteng');
         $superadmin->save();
-        $superadmin->assignRole('rt');
+
+        $superadmin2 = new User();
+        $superadmin2->name = 'ahmadRW';
+        $superadmin2->password = bcrypt('ganteng');
+        $superadmin2->save();
     }
 }

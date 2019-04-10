@@ -65,6 +65,7 @@ $("#nik").change(function(){
 	$("#job").val( nik[this.value].pekerjaan );
 	$("#religion").val( nik[this.value].agama );
 	$("#address").val( nik[this.value].alamat );
+	$('[name=nik_asli]').val( nik[this.value].nik );
 });
 
 $('.inp').change(function(){

@@ -21,3 +21,4 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::post('/log', 'TestController@log');
 Route::get('/pdf', 'TestController@index');
 Route::post('/service/submit','TestController@hai')->name('hai');
+Route::post('/resident/submit','SementaraController@euy')->name('manip');

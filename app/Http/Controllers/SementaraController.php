@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Models\KkNumber;
+use App\Models\Submission;
 
 class SementaraController extends Controller
 {
@@ -19,6 +20,7 @@ class SementaraController extends Controller
     		$niks = [];
     		foreach ($item->resident as $item2) {
     			$nik[] = [
+                    'nik' => $item2->nik,
 					'nama' => $item2->name,
 					'jenis_kelamin' => $item2->sex,
 					'tempat_lahir' => $item2->place_of_birth,
@@ -42,4 +44,14 @@ class SementaraController extends Controller
 
 		return view('service.covering-letter.index', compact('kk_res', 'nik'));    	
     }
+
+    public function page(){
+        $data = Submission::all();
+        return view('admin/service/submission', compact('data'));        
+    }
+
+    public function euy(Request $req){
+           Submission::find($req->id)->update(['status' => $req->type]);
+           return redirect()->back();   
+    }    
 }

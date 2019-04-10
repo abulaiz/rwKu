@@ -17,4 +17,4 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('resident\list', 'Resident\ResidentController@list');
+Route::get('kkList/{keyword}', 'Resident\KKController@list');

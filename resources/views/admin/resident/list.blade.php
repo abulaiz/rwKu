@@ -29,9 +29,9 @@
                   <td>
                     <button type="button" class="btn btn-outline-info dropdown-toggle btn-sm" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Action</button>
                     <div class="dropdown-menu" x-placement="bottom-start">
-                        <button class="dropdown-item">Detail</button>
-                        <button class="dropdown-item">Edit</button>             
-                        <button class="dropdown-item">Hapus</button>             
+                        <button class="dropdown-item"><i class="fa fa-th-list mr-2"></i>Detail</button>
+                        <button class="dropdown-item"><i class="fa fa-pencil mr-2"></i>Edit</button>             
+                        <button class="dropdown-item"><i class="fa fa-trash-o mr-2"></i>Hapus</button>             
                     </div>                    
                   </td>
                 </tr>
@@ -43,6 +43,13 @@
       </div>
     </div>
   </div>
+
+<style type="text/css">
+  .dropdown-item{
+    padding: 15px !important;
+  }
+</style>
+
 @endsection
 
 @section('extra-js') 

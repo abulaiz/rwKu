@@ -10,12 +10,15 @@
           {!!Form::open(['route' => ['resident.store'],'method'=>'post', 'id'=>'form-resident', 'class'=>'forms-sample']) !!}
             <div class="form-group">
               <label for="kk_number">Nomor KK</label>
-              <select class="form-control" id="kk_number" name="kk_number">
+<!--               <select class="form-control" id="kk_number" name="kk_number">
                 <option selected disabled>-- Pilih Nomor KK --</option>
                 @foreach ($kk as $data)
                   <option value="{{ $data->id }}">{{ $data->number }}</option>
                 @endforeach
-              </select>
+              </select> -->
+              <input type="text" pattern="\d*" maxlength="16" class="form-control" id="kk_number" name="kk_number" placeholder="No KK">
+              <i id="right-status" class="fa fa-check text-success" style="position: absolute; left: 85%; top: 100px; display: none;"></i>
+              <i id="wrong-status" class="fa fa-times text-danger" style="position: absolute; left: 85%; top: 100px; display: none;"></i>              
             </div>
             <div class="form-group">
               <label for="nik">NIK</label>
@@ -110,5 +113,5 @@
 @endsection
 
 @section('extra-js')
-
+  <script src="../../../js/view/resident/admin-add.js" type="text/javascript"></script>
 @endsection

@@ -4,9 +4,12 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use PDF;
+use Validator;
 
 use App\Http\Requests;
 use Illuminate\Http\Response;
+
+use App\Models\Submission;
 
 class TestController extends Controller
 {
@@ -112,11 +115,7 @@ class TestController extends Controller
 		// PDF::Cell(0, 10, "Bandung, 27 Mei 2019", 0, true, 'C', 0, '', 0, false, 'M', 'M');
 
 		// PDF::setX( PDF::getX() + 110 );
-		// PDF::Cell(0, 18, "Ketua RT", 0, true, 'C', 0, '', 0, false, 'M', 'M');
-		$ht = '
-			<p style="color:red; width:50%; background-color: black;">hai</p>
-		';
-		PDF::writeHTML($ht);
+
 
 		PDF::lastPage();
 		PDF::Output('my_file.pdf', 'I');  
@@ -141,6 +140,27 @@ class TestController extends Controller
     }
 
     public function hai(Request $req){
-    	return redirect()->back()->with(['_msg'=>'euy','_e'=>'success']);
+        $rules = [
+            'necessity'=>'required',
+            'nik_asli'=>'required|exists:residents,nik'
+        ];
+
+        $v = Validator::make($req->all(),$rules);
+
+        Submission::create([
+        	'necessity' => $req->necessity,
+        	'nik' => $req->nik_asli,
+        	'kk_date' => '2018-12-12', 	
+        	'skp_number' => ' - ',	
+        	'skp_date' => '2018-12-12',
+        	'status' => 1
+        ]);
+
+        if($v->passes()){
+    		return redirect()->back()->with(['_msg'=>'Permintaan anda sudah terkirim, silahkan tunggu kofirmasi lebih lanjut','_e'=>'success']);        	
+        } else {
+    		return redirect()->back()->with(['_msg'=>'Silahkan Lengkapi formulir','_e'=>'warning']);        	        	
+        }
     }
+
 }
