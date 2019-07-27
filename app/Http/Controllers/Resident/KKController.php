@@ -12,9 +12,9 @@ class KKController extends Controller
     public function list($keyword){
     	$data = KkNumber::where('number', $keyword);
     	if( $data->exists() ) {
-    		$residents = [];
+    		$resident = [];
     		$kk = $data->get()[0];
-    		foreach ($kk->resident as $item) {
+    		foreach ($kk->resident as $items) {
     			$resident[] = [
                     'nik' => $item->nik,
 					'nama' => $item->name,

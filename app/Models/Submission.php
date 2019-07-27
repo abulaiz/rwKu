@@ -10,6 +10,6 @@ class Submission extends Model
 
     public function resident()
     {
-        return $this->belongsTo('App\Models\Resident', 'nik', 'nik');
+        return $this->belongsTo('App\Model\Resident', 'nik', 'nik');
     }    
 }

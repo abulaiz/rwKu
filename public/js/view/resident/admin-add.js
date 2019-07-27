@@ -1,4 +1,4 @@
-$('#kk_number').keyup(function() {
+$('#kk_number').on('keyup change',function() {
 	var val = this.value;
 	if( val.length == 16 ){
 		$('#loader-spinner').show();
@@ -6,14 +6,12 @@ $('#kk_number').keyup(function() {
 		    url: '/api/kkList/'+val,
 		    success: function (data) {
 		    	$('#loader-spinner').hide();
-		    	if(!data.exists){
-		    		$('#wrong-status').show();
-		    		$('#box-danger').show();
-		    	} else if(data.exists && data.resident.length > 0 ){
+		    	if(data.exists){
 		    		$('#right-status').show();
 		    		$('#another_element').show();
 		    	} else {
-		    		$('#box-warning').show();
+		    		$('#wrong-status').show();
+		    		$('#box-danger').show();
 		    	}
 		    }
 	    });						

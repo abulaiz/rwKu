@@ -14,9 +14,11 @@
       </a>
       <div class="collapse" id="residents-menu">
         <ul class="nav flex-column sub-menu">
+          @hasrole('rw')
           <li class="nav-item">
             <a class="nav-link" href="/adm/resident/add">Input Baru</a>
           </li>
+          @endhasrole
           <li class="nav-item">
             <a class="nav-link" href="/adm/resident/list">List Warga</a>
           </li>
@@ -57,8 +59,8 @@
     </li>
     <li class="nav-item">
       <a class="nav-link" href="#" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
-        <i class="menu-icon mdi mdi-chart-line"></i>
-        <span class="menu-title">Logout</span>
+        <i class="menu-icon mdi  mdi-logout"></i>
+        <span class="menu-title">Keluar</span>
       </a>
     </li>    
   </ul>

@@ -10,13 +10,17 @@ use App\Http\Requests;
 use Illuminate\Http\Response;
 
 use App\Models\Submission;
+use App\Libs\SimpleEnc;
 
 class TestController extends Controller
 {
 
-    public function index(Request $request){
+    public function index($id){
 		// Content
 		$html = 'Write something here';
+		$e = new SimpleEnc();
+		$id = $e->decrypt($id);
+		$data = Submission::find($id);
 
 		// Custom Header
 		PDF::setHeaderCallback(function($pdf) {
@@ -64,30 +68,30 @@ class TestController extends Controller
 		PDF::Ln(10);
 
 		PDF::Cell(50, 17, "Nama", 0, 0, '', 0, '', 0, false, 'M', 'M');
-		PDF::Cell(0, 17, ":  ".$request->cookie('nama'), 0, true, '', 0, '', 0, false, 'M', 'M');
+		PDF::Cell(0, 17, ":  ".$data->resident->name, 0, true, '', 0, '', 0, false, 'M', 'M');
 
 		PDF::Cell(50, 17, "Noppen", 0, 0, '', 0, '', 0, false, 'M', 'M');
-		PDF::Cell(0, 17, ":  ".$request->cookie('nik'), 0, true, '', 0, '', 0, false, 'M', 'M');
+		PDF::Cell(0, 17, ":  ".$data->resident->nik, 0, true, '', 0, '', 0, false, 'M', 'M');
 
 		PDF::Cell(50, 17, "Jenis Kelamin", 0, 0, '', 0, '', 0, false, 'M', 'M');
-		PDF::Cell(0, 17, ":  ".$request->cookie('jenis_kelamin'), 0, true, '', 0, '', 0, false, 'M', 'M');
+		PDF::Cell(0, 17, ":  ".$data->resident->sex, 0, true, '', 0, '', 0, false, 'M', 'M');
 
 		PDF::Cell(50, 17, "Tempat/Tgl.Lahir (umur)", 0, 0, '', 0, '', 0, false, 'M', 'M');
-		PDF::Cell(0, 17, ":  ".$request->cookie('lahir'), 0, true, '', 0, '', 0, false, 'M', 'M');
+		PDF::Cell(0, 17, ":  ".$data->resident->place_of_birth, 0, true, '', 0, '', 0, false, 'M', 'M');
 
 		PDF::Cell(50, 17, "Kewarganegaraan", 0, 0, '', 0, '', 0, false, 'M', 'M');
-		PDF::Cell(0, 17, ":  ".$request->cookie('kewarganegaraan'), 0, true, '', 0, '', 0, false, 'M', 'M');
+		PDF::Cell(0, 17, ":  ".$data->resident->citizenship, 0, true, '', 0, '', 0, false, 'M', 'M');
 
 		PDF::Cell(50, 17, "Status Perkawinan", 0, 0, '', 0, '', 0, false, 'M', 'M');
-		PDF::Cell(0, 17, ":  ".$request->cookie('perkawinan'), 0, true, '', 0, '', 0, false, 'M', 'M');
+		PDF::Cell(0, 17, ":  ".($data->resident->maried ? 'Menikah' : 'Belum Menikah'), 0, true, '', 0, '', 0, false, 'M', 'M');
 
 		PDF::Cell(50, 17, "Pekerjaan", 0, 0, '', 0, '', 0, false, 'M', 'M');
-		PDF::Cell(0, 17, ":  ".$request->cookie('pekerjaan'), 0, true, '', 0, '', 0, false, 'M', 'M');
+		PDF::Cell(0, 17, ":  ".$data->resident->job, 0, true, '', 0, '', 0, false, 'M', 'M');
 
 		PDF::Cell(50, 17, "Agama", 0, 0, '', 0, '', 0, false, 'M', 'M');
-		PDF::Cell(0, 17, ":  ".$request->cookie('agama'), 0, true, '', 0, '', 0, false, 'M', 'M');
+		PDF::Cell(0, 17, ":  ".$data->resident->religion, 0, true, '', 0, '', 0, false, 'M', 'M');
 
-		$des = $request->cookie('alamat');
+		$des = $data->resident->address;
 		PDF::Cell(50, 17, "Alamat", 0, 0, '', 0, '', 0, false, 'M', 'M');
 		PDF::Cell(3.5, 15, ":  ", 0, 0, '', 0, '', 0, false, 'M', 'M');
 		PDF::setCellHeightRatio(1.2);
@@ -105,7 +109,7 @@ class TestController extends Controller
 
 		PDF::Cell(50, 17, "Pengantar ini diperlukan untuk membuat : ", 0, true, '', 0, '', 0, false, 'M', 'M');
 		PDF::setY( PDF::getY()-4 );
-		PDF::MultiCell(0, 5, $request->cookie('keperluan'), 0, '', 0, 2, '', '', true);	
+		PDF::MultiCell(0, 5, $data->necessity, 0, '', 0, 2, '', '', true);	
 
 		PDF::Ln(10);
 
@@ -120,47 +124,4 @@ class TestController extends Controller
 		PDF::lastPage();
 		PDF::Output('my_file.pdf', 'I');  
     }
-
-    public function log(Request $req){
-    	$niks = [ '32012441209235', '32012488209235', '32012441211235', '32012441934535'];
-
-	      $minutes = 1;
-	      $response = new Response('Hello World');
-	      $response->withCookie(cookie('nama', $req->nama, $minutes));
-	      $response->withCookie(cookie('nik', $niks[$req->nik], $minutes));
-	      $response->withCookie(cookie('jenis_kelamin', $req->jenis_kelamin, $minutes));
-	      $response->withCookie(cookie('lahir', $req->lahir, $minutes));
-	      $response->withCookie(cookie('kewarganegaraan', $req->kewarganegaraan, $minutes));
-	      $response->withCookie(cookie('perkawinan', ($req->perkawinan == '0' ? 'Belum Menikah' : 'Nikah'), $minutes));
-	      $response->withCookie(cookie('pekerjaan', $req->pekerjaan, $minutes));
-	      $response->withCookie(cookie('agama', $req->agama, $minutes));
-	      $response->withCookie(cookie('alamat', $req->alamat, $minutes));
-	      $response->withCookie(cookie('keperluan', $req->keperluan, $minutes));
-	      return $response;
-    }
-
-    public function hai(Request $req){
-        $rules = [
-            'necessity'=>'required',
-            'nik_asli'=>'required|exists:residents,nik'
-        ];
-
-        $v = Validator::make($req->all(),$rules);
-
-        Submission::create([
-        	'necessity' => $req->necessity,
-        	'nik' => $req->nik_asli,
-        	'kk_date' => '2018-12-12', 	
-        	'skp_number' => ' - ',	
-        	'skp_date' => '2018-12-12',
-        	'status' => 1
-        ]);
-
-        if($v->passes()){
-    		return redirect()->back()->with(['_msg'=>'Permintaan anda sudah terkirim, silahkan tunggu kofirmasi lebih lanjut','_e'=>'success']);        	
-        } else {
-    		return redirect()->back()->with(['_msg'=>'Silahkan Lengkapi formulir','_e'=>'warning']);        	        	
-        }
-    }
-
 }

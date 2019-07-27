@@ -16,6 +16,7 @@
   <!-- End plugin css for this page -->
   <!-- inject:css -->
   <link rel="stylesheet" href="{{ URL::asset('admin/css/style.css') }}">
+  <link href="{{ asset('css/style2.css') }}" rel="stylesheet">
   <!-- endinject -->
   <link rel="shortcut icon" href="{{ URL::asset('admin/images/favicon.png') }}" />
 </head>
@@ -33,9 +34,9 @@
         <div class="content-wrapper">
           @if(session('errors'))
     				@if ($errors->any())
-    			    <div class="alert bg-warning" role="alert">
+    			    <div style="color: white !important" class="alert bg-warning" role="alert">
     			        ERROR !!
-    			      <a href="#" class="pull-right">
+    			      <a href="#" class="pull-right" style="color: white;" data-dismiss="alert" aria-label="Close">
     			        <em class="fa fa-lg fa-close close-alert"></em>
     			      </a>
     			      <ul>
@@ -47,14 +48,23 @@
     			  @endif
     			@endif
     		  @if (Session('success'))
-    		    <div class="alert bg-success" role="alert">
+    		    <div style="color: white !important" class="alert bg-success" role="alert">
     		      <em class="fa fa-lg fa-check">&nbsp;</em>
     		        {{ Session('success') }}
-    		      <a href="#" class="pull-right">
+    		      <a href="#" class="pull-right" style="color: white;" data-dismiss="alert" aria-label="Close">
     		        <em class="fa fa-lg fa-close close-alert"></em>
     		      </a>
     		    </div>
     		  @endif
+          @if (Session('info'))
+            <div style="color: white !important" class="alert bg-info" role="alert">
+              <em class="fa fa-lg fa-check">&nbsp;</em>
+                {{ Session('info') }}
+              <a href="#" class="pull-right" style="color: white;" data-dismiss="alert" aria-label="Close">
+                <em class="fa fa-lg fa-close close-alert"></em>
+              </a>
+            </div>
+          @endif          
           @yield('content')
         </div>
         <!-- content-wrapper ends -->
@@ -82,6 +92,9 @@
   <!-- inject:js -->
   <script src="{{ URL::asset('admin/js/off-canvas.js') }}"></script>
   <script src="{{ URL::asset('admin/js/misc.js') }}"></script>
+  <script src="../../../js/swal/sweetalert.min.js" type="text/javascript"></script>
+  <script src="../../../js/swal/swalTool.js" type="text/javascript"></script>
+
   <!-- endinject -->
   @yield('extra-js')
 </body>

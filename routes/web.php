@@ -19,6 +19,6 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::post('/log', 'TestController@log');
-Route::get('/pdf', 'TestController@index');
-Route::post('/service/submit','TestController@hai')->name('hai');
+Route::get('/pdf/{id}', 'TestController@index');
+Route::post('/service/submit','SubmissionController@store')->name('submit_submission');
 Route::post('/resident/submit','SementaraController@euy')->name('manip');

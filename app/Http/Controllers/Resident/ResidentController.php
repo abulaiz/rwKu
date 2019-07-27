@@ -36,24 +36,21 @@ class ResidentController extends Controller
         "job" => "required|string",
         "religion" => "required|string",
         "address" => "required|string",
-        "rt" => "required|numeric",
-        "rw" => "required|numeric",
-        "kel_village" => "required|string",
-        "sub_district" => "required|string"
+        "rt" => "required|numeric"
       ]);
 
       $resident = new Resident;
       $resident->nik = $req->nik;
-      $resident->kk_number_id = $req->kk_number;
+      $resident->kk_number_id = KkNumber::where('number', $req->kk_number)->first()->id;
       $resident->name = ucwords($req->name);
       $resident->sex = ucwords($req->sex);
       $resident->place_of_birth = ucwords($req->place_of_birth);
       $resident->date_of_birth = $req->date_of_birth;
       $resident->address = ucwords($req->address);
       $resident->rt = $req->rt;
-      $resident->rw = $req->rw;
-      $resident->kel_village = ucwords($req->kel_village);
-      $resident->sub_district = ucwords($req->sub_district);
+      // $resident->rw = $req->rw;
+      // $resident->kel_village = ucwords($req->kel_village);
+      // $resident->sub_district = ucwords($req->sub_district);
       $resident->religion = ucwords($req->religion);
       $resident->married = ($req->marital_status == 'on') ? 1 : 0 ;
       $resident->job = ucwords($req->job);
@@ -63,22 +60,12 @@ class ResidentController extends Controller
 
     public function store_kk($req){
       $this->validate($req, [
-        'kk_number' => 'required|numeric|digits:16',
+        'kk_number_add' => 'required|numeric|digits:16|unique:kk_numbers,number',
       ]);
 
       $kk = new KkNumber;
-      $kk->number = $req->kk_number;
+      $kk->number = $req->kk_number_add;
       $kk->save();
     }
 
-    public function list(){
-      $data = Resident::all();
-      $res = [];
-      foreach ($data as $item) {
-        $res[] = [
-          'nama' => $item->name, 'jenis_kelamin' => $item->sex,
-          'rt' => $item->rt
-        ];
-      }
-    }
 }

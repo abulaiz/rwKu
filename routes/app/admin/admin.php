@@ -9,6 +9,6 @@
     })->name('admin-dashboard')->middleware('auth');
 
     Route::prefix('service')->group(function () {
-      Route::get('submission/cover-letter', 'SementaraController@page')->name('admin-residents')->middleware('auth');
+      Route::get('submission/cover-letter', 'SubmissionController@index')->name('admin-residents')->middleware('auth');
     });
   });

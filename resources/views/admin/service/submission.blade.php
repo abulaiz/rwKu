@@ -2,6 +2,7 @@
 
 @section('title', 'Admin | Pengajuan')
 @section('content')
+  
   <div class="row">
     <div class="col-lg-12 grid-margin stretch-card">
       <div class="card">
@@ -21,7 +22,6 @@
               <tbody>
                 @php $i = 1; @endphp
                 @foreach($data as $item)
-                @if( (Auth::user()->name == 'ahmadRW' && $item->status != 1 && $item->status != 3) || Auth::user()->name == 'ahmad' )
                   <tr>
                     <td class="py-1">{{ $i++ }}</td>
                     <td>{{ $item->resident->name }}</td>
@@ -38,23 +38,28 @@
                     <td>
                       <button type="button" class="btn btn-outline-info dropdown-toggle btn-sm" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Action</button>
                       <div class="dropdown-menu" x-placement="bottom-start">
-                          <button class="dropdown-item"><i class="fa fa-print mr-2"></i>Cetak</button>
+                          @if($item->status != 3)
+                          <button onclick="cetak({{ $item->id }} )" class="dropdown-item"><i class="fa fa-print mr-2"></i>Cetak</button>
+                          @endif
 
-                          @if($item->status == 1 || (Auth::user()->name == 'ahmadRW' && $item->status != 4) )
+                          @if($item->status == 3)
+                          <button onclick="hapus({{ $item->id }} )" class="dropdown-item"><i class="fa fa-trash mr-2"></i>Hapus</button>     
+                          @endif
+
+                          @if($item->status == 1 || (Auth::user()->hasRole('rw') && $item->status != 4) )
                           <button onclick="tolak({{ $item->id }} )" class="dropdown-item"><i class="fa fa-times mr-2"></i>Tolak</button>             
                           @endif
 
-                          @if(Auth::user()->name == 'ahmad' && $item->status == 1)
+                          @if($item->status == 1)
                           <button onclick="teruskan({{ $item->id }} )" class="dropdown-item"><i class="fa fa-share mr-2"></i>Teruskan</button>
                           @endif
 
-                          @if(Auth::user()->name == 'ahmadRW' && $item->status == 2)
+                          @if(Auth::user()->hasRole('rw') && $item->status == 2)
                           <button onclick="terima({{ $item->id }} )" class="dropdown-item"><i class="fa fa-check mr-2"></i>Terima</button>
                           @endif
                       </div>  
                     </td>
                   </tr>
-                  @endif
                 @endforeach
               </tbody>
             </table>
@@ -79,23 +84,39 @@
 @endsection
 
 @section('extra-js')
+<script src="{{ URL::asset('js/plugin/SimpleEnc.js') }}"></script>
 
 <script type="text/javascript">
   function tolak(id) {
-    $('#id_an').val(id);
-    $('#type_an').val( 3 );
-    event.preventDefault();document.getElementById('ideapad').submit();
+    _confirm(1 , function(){
+      $('#id_an').val(id);
+      $('#type_an').val( 3 );
+      event.preventDefault();document.getElementById('ideapad').submit();
+    });  
   }
   function teruskan(id) {
-    $('#id_an').val(id);
-    $('#type_an').val( 2 );
-    event.preventDefault();document.getElementById('ideapad').submit();
+    _confirm(0 , function(){
+      $('#id_an').val(id);
+      $('#type_an').val( 2 );
+      event.preventDefault();document.getElementById('ideapad').submit();
+    });
   }
   function terima(id) {
-    $('#id_an').val(id);
-    $('#type_an').val( 4 );
-    event.preventDefault();document.getElementById('ideapad').submit();
-  }    
+    _confirm(2 , function(){
+      $('#id_an').val(id);
+      $('#type_an').val( 4 );
+      event.preventDefault();document.getElementById('ideapad').submit();      
+    });
+
+  }  
+  function hapus(id){
+      $('#id_an').val(id);
+      $('#type_an').val( 3 );
+      event.preventDefault();document.getElementById('ideapad').submit();    
+  }
+  function cetak(id) {
+    window.open('/pdf/'+SimpleEnc.encrypt(id),'_blank');
+  }  
 </script>
 
 @endsection

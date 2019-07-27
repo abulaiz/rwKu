@@ -1,3 +1,17 @@
 .more_btn{
 	opacity: 1 !important;
 }
+
+.left-status-kk{
+	position: absolute; 
+	left: 90%; 
+	top: 33px; 
+	display: none;
+}
+
+@media (max-width: 460px)
+{
+	.left-status-kk{
+		left: 85%; 
+	}
+}

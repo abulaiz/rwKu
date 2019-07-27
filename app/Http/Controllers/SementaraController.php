@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Models\KkNumber;
 use App\Models\Submission;
+use Auth;
 
 class SementaraController extends Controller
 {
@@ -45,13 +46,12 @@ class SementaraController extends Controller
 		return view('service.covering-letter.index', compact('kk_res', 'nik'));    	
     }
 
-    public function page(){
-        $data = Submission::all();
-        return view('admin/service/submission', compact('data'));        
-    }
-
     public function euy(Request $req){
-           Submission::find($req->id)->update(['status' => $req->type]);
-           return redirect()->back();   
+        if(Auth::user()->hasRole('rt') && $req->type == 3){
+            Submission::find($req->id)->delete();
+            return redirect()->back();                  
+        }
+        Submission::find($req->id)->update(['status' => $req->type]);
+        return redirect()->back();   
     }    
 }

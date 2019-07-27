@@ -15,7 +15,7 @@
       <div class="container">
           <div class="row get_touch_inner justify-content-md-center">
               <div class="col-lg-6">
-                  <form class="contact_us_form row" onsubmit="return confirm()" method="POST" id="contactForm" action="{{ route('hai') }}" novalidate="novalidate" style="margin-top: 0px;">
+                  <form class="contact_us_form row" onsubmit="return confirm()" method="POST" id="contactForm" action="{{ route('submit_submission') }}" novalidate="novalidate" style="margin-top: 0px;">
                     {{ csrf_field() }}
                       <div class="form-group col-lg-12">
                         <input autofocus type="text" pattern="\d*" maxlength="16" class="form-control inp" id="no_kk" name="no_kk" placeholder="Masukkan Nomer KK">

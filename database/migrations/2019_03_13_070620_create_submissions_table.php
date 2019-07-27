@@ -20,6 +20,7 @@ class CreateSubmissionsTable extends Migration
             $table->date('kk_date');
             $table->string('skp_number');
             $table->date('skp_date');
+            $table->smallInteger('status');
             $table->timestamps();
 
             $table->foreign('nik')

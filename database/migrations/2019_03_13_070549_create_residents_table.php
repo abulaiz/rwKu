@@ -21,10 +21,10 @@ class CreateResidentsTable extends Migration
             $table->string('place_of_birth');
             $table->date('date_of_birth');
             $table->string('address');
-            $table->string('rt');
-            $table->string('rw');
-            $table->string('kel_village');
-            $table->string('sub_district');
+            $table->smallInteger('rt');
+            // $table->string('rw');
+            // $table->string('kel_village');
+            // $table->string('sub_district');
             $table->string('religion');
             $table->boolean('married');
             $table->string('job');
